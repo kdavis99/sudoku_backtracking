@@ -11,9 +11,9 @@
 
 using namespace std;
 
-typedef int val;
-typedef int x;
-typedef int y;
+typedef int value;
+typedef int row;
+typedef int col;
 
 int main(int argc, char *argv[]) {
    // read in command line arguments
@@ -38,11 +38,12 @@ int main(int argc, char *argv[]) {
       sudoku[i].resize(sudoku_size);
    }
 
-   while (sudoku_input >> in_x) {
-      sudoku_input >> in_y;
-      sudoku_input >> in_val;
+   int x, y, val;
+   while (sudoku_input >> x) {
+      sudoku_input >> y;
+      sudoku_input >> val;
 
-      sudoku[in_x][in_y] = in_val;
+      sudoku[x][y] = val;
    }
 
    for (int i = 0; i < sudoku.size(); ++i) {
@@ -52,7 +53,7 @@ int main(int argc, char *argv[]) {
       cout << endl;
    }
 
-   stack<pair<val, pair<x, y> > > backtrack;
+   stack<pair<value, pair<row, col> > > backtrack;
 
    return 0;
 }
