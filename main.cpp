@@ -4,11 +4,16 @@
 #include <limits.h>
 #include <queue>
 #include <sstream>
+#include <stack>
 #include <stdlib.h>
 #include <string>
 #include <vector>
 
 using namespace std;
+
+typedef int val;
+typedef int x;
+typedef int y;
 
 int main(int argc, char *argv[]) {
    // read in command line arguments
@@ -25,7 +30,7 @@ int main(int argc, char *argv[]) {
          << endl;
    }
 
-   int x, y, val;
+   int in_x, in_y, in_val;
    vector<vector<int> > sudoku;
    sudoku.resize(sudoku_size);
 
@@ -33,11 +38,11 @@ int main(int argc, char *argv[]) {
       sudoku[i].resize(sudoku_size);
    }
 
-   while (sudoku_input >> x) {
-      sudoku_input >> y;
-      sudoku_input >> val;
+   while (sudoku_input >> in_x) {
+      sudoku_input >> in_y;
+      sudoku_input >> in_val;
 
-      sudoku[x][y] = val;
+      sudoku[in_x][in_y] = in_val;
    }
 
    for (int i = 0; i < sudoku.size(); ++i) {
@@ -46,6 +51,8 @@ int main(int argc, char *argv[]) {
       }
       cout << endl;
    }
+
+   stack<pair<val, pair<x, y> > > backtrack;
 
    return 0;
 }
